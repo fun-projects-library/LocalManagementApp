@@ -1,0 +1,27 @@
+
+
+.header {
+    height: 72px;
+    background-color: blanchedalmond;
+    display: flex;
+    align-items: center;
+    padding: 0px 24px;
+}
+
+nav li{
+    display: inline-block;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.auth{
+    margin-left: auto;
+    
+}
+
+.brand {
+    font-size: 24px;
+}
+
+
+
