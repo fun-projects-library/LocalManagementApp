@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../styles/Albums.css'
-import AlbumForm from "./AlbumForm"
+// import AlbumForm from "./AlbumForm"
 
 
 

@@ -1,0 +1,16 @@
+
+
+.highlightTDs td input{
+    background-color: rgb(64, 187, 187);
+}
+
+.editButtons {
+    font-weight: bold;
+}
+
+.editButtons:hover{
+    cursor: pointer;
+}
+td input{
+    padding: 1%;
+}
