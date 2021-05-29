@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/LocalManagementApp/static/css/main.d4265b9f.chunk.css",
+    "main.js": "/LocalManagementApp/static/js/main.bfbe1210.chunk.js",
+    "main.js.map": "/LocalManagementApp/static/js/main.bfbe1210.chunk.js.map",
+    "runtime-main.js": "/LocalManagementApp/static/js/runtime-main.b0829bbc.js",
+    "runtime-main.js.map": "/LocalManagementApp/static/js/runtime-main.b0829bbc.js.map",
+    "static/js/2.a03d3826.chunk.js": "/LocalManagementApp/static/js/2.a03d3826.chunk.js",
+    "static/js/2.a03d3826.chunk.js.map": "/LocalManagementApp/static/js/2.a03d3826.chunk.js.map",
+    "static/js/3.174a4056.chunk.js": "/LocalManagementApp/static/js/3.174a4056.chunk.js",
+    "static/js/3.174a4056.chunk.js.map": "/LocalManagementApp/static/js/3.174a4056.chunk.js.map",
+    "index.html": "/LocalManagementApp/index.html",
+    "static/css/main.d4265b9f.chunk.css.map": "/LocalManagementApp/static/css/main.d4265b9f.chunk.css.map",
+    "static/js/2.a03d3826.chunk.js.LICENSE.txt": "/LocalManagementApp/static/js/2.a03d3826.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b0829bbc.js",
+    "static/js/2.a03d3826.chunk.js",
+    "static/css/main.d4265b9f.chunk.css",
+    "static/js/main.bfbe1210.chunk.js"
+  ]
+}
