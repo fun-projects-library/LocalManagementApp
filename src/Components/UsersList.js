@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from "./Form";
 import "../styles/UserList.css"
-import axios from "axios"
+// import axios from "axios"
 
 
 class UsersList extends React.Component {
@@ -62,7 +62,7 @@ class UsersList extends React.Component {
     
     e.target.parentElement.parentElement.children[5].style.display = "table-cell";
 
-    console.log(this.state)
+    // console.log(this.state)
   }
 
   saveChanges(e){
@@ -120,7 +120,7 @@ class UsersList extends React.Component {
       .then(jsonResponse => console.log(jsonResponse));
     }
 
-    console.log(this.state)
+    //console.log(this.state)
   }
 
   cancelChanges(e){

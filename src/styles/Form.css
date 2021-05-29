@@ -19,3 +19,10 @@
     margin-left: 0;
     display: none;
 }
+
+#userSuccesful{
+    font-size: 12px;
+    font-weight: 500;
+    color: rgb(86, 192, 72);
+    display: none;
+}

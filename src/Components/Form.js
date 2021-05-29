@@ -19,7 +19,7 @@ export default class Form extends Component {
     
     handleSubmit = (e) => {
 
-        console.log(e)
+        // console.log(e.target.parentElement.children[10])
 
         
         if(this.state.name === ""){
@@ -39,7 +39,11 @@ export default class Form extends Component {
             e.target.parentElement.children[1].style.display = "none";
             e.target.parentElement.children[3].style.display = "none"
             e.target.parentElement.children[5].style.display = "none"
-            e.target.parentElement.children[7].style.display = "none"
+            e.target.parentElement.children[7].style.display = "none";
+            e.target.parentElement.children[10].style.display = "inline-block"
+            setTimeout(()=>{
+                e.target.parentElement.children[10].style.display = "none"
+            },2000)
             
         })
         }
@@ -62,6 +66,7 @@ export default class Form extends Component {
 
                     <button onClick={this.props.handleClick} className="addButtons">-</button>
                     <button onClick={this.handleSubmit} type="button" className="addButtons">+</button>
+                    <span id="userSuccesful">Succesfully added!</span>
                 </form>
             </div>
         )

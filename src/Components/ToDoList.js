@@ -60,15 +60,15 @@ export default class TodoLists extends Component {
         //console.log(this.state.todos)
         return (
             <div id="mainDiv">
-                <label>Enter your item here!</label>
+                <label style={{fontSize: "25px", fontWeight:"bold"}}>To Do List</label>
                 <br/>
-                <input name="input" id="todo_input" value={this.state.input} onChange={this.handleChange}></input>
+                <input name="input" id="todo_input" value={this.state.input} onChange={this.handleChange} placeholder="Enter your item!"></input>
                 <button id="addButton" onClick={this.handleAddInput}>ADD</button>
                 <ul>
                 {this.state.todos.map((item)=>{
                     return(
                         
-                        <li key={item.id} id={item.id}>
+                        <li key={item.id} id={item.id} className="todosList">
                             <input type="checkbox" onClick={this.completeItem}/>
                             <input type="text" defaultValue={item.title} className="todoItems"/> 
                             <span id="deleteSpan" onClick={this.removeItem}>Delete</span>
