@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route
 } from "react-router-dom";
@@ -16,7 +16,7 @@ import Albums from "./Components/Albums";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <HashRouter>
       <NavBar />
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
@@ -34,7 +34,7 @@ ReactDOM.render(
           <UsersList />
         </Route>
       </Switch>
-    </Router>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

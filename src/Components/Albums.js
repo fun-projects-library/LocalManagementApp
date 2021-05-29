@@ -22,7 +22,7 @@ import '../styles/Albums.css'
         fetch('https://jsonplaceholder.typicode.com/albums')
   .then(response => response.json())
   .then(json => {
-      console.log(json)
+      //console.log(json)
       return this.setState({albums: json})
   }
     )
@@ -36,7 +36,7 @@ import '../styles/Albums.css'
              <button>Add</button>
              <div className='album-container'>
              {this.state.albums.map((item,index) => {
-                 return <a href= '#' className='container' key={index}>
+                 return <a href="https://www.youtube.com/watch?v=UXiAyIZjk7c" target="_blank" rel="noreferrer" className='container' key={index}>
                      {item.title}
                  </a>
              })}

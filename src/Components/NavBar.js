@@ -17,7 +17,7 @@ class NavBar extends React.Component{
                     <li><Link to="/albums">Albums</Link></li>
                 </ul>
             </nav>
-            <div className="auth"><a href="#">Logout</a></div>
+            <div className="auth"><a href="https://www.youtube.com/watch?v=UXiAyIZjk7c" target="_blank" rel="noreferrer">Logout</a></div>
         </header>
         )
         

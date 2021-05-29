@@ -11,6 +11,45 @@
 .editButtons:hover{
     cursor: pointer;
 }
-td input{
-    padding: 1%;
+
+#addButton{
+    margin:0.5% 3%;
+    padding:0.3% 1%;
+    
 }
+
+#usersListHeader {
+    margin-left: 3%;
+}
+
+#formComponent{
+    margin-left: 2%;
+}
+
+.userInfos{
+    border: none;
+    margin-top: 4%;
+    outline: none;
+    padding: 2%;
+    border-radius: 0.25rem;
+}
+
+.usersListTR{
+    border-bottom: 1px solid black;
+}
+
+#usersListTable {
+    border-collapse: collapse;
+    margin-left: 3%;
+}
+
+#usersListTable th {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 1% 1.5%;
+    text-align: left; 
+}
+
+
+

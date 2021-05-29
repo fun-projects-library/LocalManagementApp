@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import axios from "axios"
+import axios from "axios";
+import '../styles/Form.css';
 
 export default class Form extends Component {
     state = {
@@ -16,25 +17,51 @@ export default class Form extends Component {
         })
     }
     
-    handleSubmit = () => {
-        axios.post("https://jsonplaceholder.typicode.com/users", this.state)
-        .then(resp=>{
+    handleSubmit = (e) => {
+
+        console.log(e)
+
+        
+        if(this.state.name === ""){
+            e.target.parentElement.children[1].style.display = "inline-block"
+        } else if(this.state.username === "") {
+            e.target.parentElement.children[3].style.display = "inline-block";
+        } else if(this.state.email === ""){
+            e.target.parentElement.children[5].style.display = "inline-block"
+        } else if(this.state.phone === ""){
+            e.target.parentElement.children[7].style.display = "inline-block"
+        } else {
+            axios.post("https://jsonplaceholder.typicode.com/users", this.state)
+            .then(resp=>{
             console.log(resp.data);
-            this.props.addUser(resp.data)
+            this.props.addUser(resp.data);
+            this.setState({name: "", username:"", email: "", phone:""});
+            e.target.parentElement.children[1].style.display = "none";
+            e.target.parentElement.children[3].style.display = "none"
+            e.target.parentElement.children[5].style.display = "none"
+            e.target.parentElement.children[7].style.display = "none"
+            
         })
+        }
+        
+        
     }
     
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div>
                 <form>
-                    <input onChange={this.handleChange} name="name" placeholder="name"></input>
-                    <input onChange={this.handleChange} name="username" placeholder="username"></input>
-                    <input onChange={this.handleChange} name="email" placeholder="email"></input>
-                    <input onChange={this.handleChange} name="phone" placeholder="phone"></input>
-                    <button onClick={this.props.handleClick}>-</button>
-                    <button onClick={this.handleSubmit} type="button">+</button>
+                    <input onChange={this.handleChange} name="name" placeholder="name" className="addInputs" value={this.state.name}></input> <span id="nameRequire" className="requires">*required</span>
+
+                    <input onChange={this.handleChange} name="username" placeholder="username" className="addInputs" value={this.state.username}></input > <span id="usernameRequire" className="requires">*required</span>
+
+                    <input onChange={this.handleChange} name="email" placeholder="email" className="addInputs" value={this.state.email}></input> <span id="emailRequire" className="requires">*required</span>
+
+                    <input onChange={this.handleChange} name="phone" placeholder="phone" className="addInputs" value={this.state.phone}></input> <span id="phoneRequire" className="requires">*required</span>
+
+                    <button onClick={this.props.handleClick} className="addButtons">-</button>
+                    <button onClick={this.handleSubmit} type="button" className="addButtons">+</button>
                 </form>
             </div>
         )

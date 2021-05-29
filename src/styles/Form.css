@@ -1,0 +1,21 @@
+
+
+.addInputs{
+    margin:0 0 1% 1%;
+    width: 150px;
+}
+
+.addButtons{
+    padding: 0 2%;
+    margin: 1%
+}
+.addButtons:hover{
+    cursor: pointer;
+}
+
+.requires{
+    font-size: 10px;
+    color: red;
+    margin-left: 0;
+    display: none;
+}
