@@ -28,7 +28,9 @@ export default class Posts extends Component {
             method: "DELETE"
         }
 
-        fetch("https://jsonplaceholder.typicode.com/posts" + e.target.parentElement.id, data);
+        fetch("https://jsonplaceholder.typicode.com/posts/" + e.target.parentElement.id, data)
+        .then(res => res.json())
+        .then(jsonRes => console.log(jsonRes))
         e.target.parentElement.remove()
     }
 

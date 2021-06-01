@@ -3,10 +3,11 @@
 .addInputs{
     margin:0 0 1% 1%;
     width: 150px;
+    padding: 0.25% 1%;
 }
 
 .addButtons{
-    padding: 0 2%;
+    padding: 0.25% 2%;
     margin: 1%
 }
 .addButtons:hover{

@@ -39,9 +39,11 @@ class UsersList extends React.Component {
       method: "DELETE"
     };
     
-    console.log(this.state);
+    //console.log(this.state);
 
     fetch("https://jsonplaceholder.typicode.com/users/" + e.target.parentElement.parentElement.id, data)
+    .then((res) => res.json())
+    .then(jsonRes => console.log(jsonRes))
 
 
     e.target.parentElement.parentElement.remove()
@@ -74,7 +76,7 @@ class UsersList extends React.Component {
     e.target.parentElement.style.display = "none";
     
     
-    let item;
+    let item = {}
     
     if(this.state.name !== ""){
       item = {name: this.state.name};
