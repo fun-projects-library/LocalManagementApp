@@ -4,25 +4,71 @@
     padding: 0;
 }
 
-.postItems{
+.postContainer{
     margin-left: 32px;
     margin-right: 32px;
     
 }
 
-.container{
-    
+.postTitle{
+    padding: 1%;
 }
 
-#removeSpan{
-    font-size: 8px;
+.postBody{
+    padding: 1%;
+}
+
+.trashPostIcons{
+    margin-left: 1%;
+    font-size:large;
+    color: red;
     float: right;
 }
-
-h3{
-    padding: 1%;
+.trashPostIcons:hover{
+    cursor: pointer;
 }
 
-p{
-    padding: 1%;
+.editPostIcons {
+    margin-left: 1%;
+    font-size:large;
+    float: right;
+    color: blue;
+}
+
+.editPostIcons:hover{
+    cursor: pointer;
+}
+
+#titleInput {
+    margin-left: 3%;
+    width: 250px;
+    height: 30px;
+}
+
+#bodyInput {
+    width: 250px;
+    height: 70px;
+    margin-left: 3%;
+}
+
+#cancelPostButton{
+    margin-top: 1%;
+    margin-left: 3%;
+    background-color: red;
+    color: white;
+    padding: 0.5% 1%;
+    width: 80px;
+}
+
+#savePostButton{
+    margin-top: 1%;
+    margin-left: 1%;
+    background-color: green;
+    color: white;
+    padding: 0.5% 1%;
+    width: 80px;
+}
+
+#createPostButton {
+    margin-left: 3%;
 }

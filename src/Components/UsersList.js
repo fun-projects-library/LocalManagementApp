@@ -75,6 +75,31 @@ class UsersList extends React.Component {
     };
     e.target.parentElement.style.display = "none";
     
+
+    // let item2 = {}
+
+
+    // if(this.state.name !== ""){
+    //   item2 = { name: this.state.name }
+    // } else if(this.state.username !== ""){
+    //   item2 = { username: this.state.username }
+    // } else if(this.state.email !== ""){
+    //   item2 = { email: this.state.email }
+    // } else if(this.state.phone !== ""){
+    //   item2 = { phone: this.state.phone }
+    // }
+
+
+    // axios.put("https://jsonplaceholder.typicode.com/users/" + e.target.parentElement.parentElement.id, item2 )
+    // .then(response => {console.log(response.data)})
+
+
+
+
+
+
+
+
     
     let item = {}
     
@@ -151,11 +176,18 @@ class UsersList extends React.Component {
 
   handleUpdate = (e) => {
     
-    this.setState({[e.target.name] : e.target.value});
-    
+
+    this.setState({[e.target.name] : e.target.value})
+
+   
+    //console.log(this.state)
     //console.log(this.state.users[e.target.parentElement.parentElement.id-1][e.target.className])
   }
 
+
+
+
+  
 
   render() {
     if(this.state.users.length){

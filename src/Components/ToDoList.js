@@ -42,9 +42,14 @@ export default class TodoLists extends Component {
     }
 
     completeItem =(e)=>{
-        console.log(e.target.parentElement.id);
+        // if condition is written in the inline CSS!!
+
+        axios.put("https://jsonplaceholder.typicode.com/todos/" + e.target.parentElement.id, {completed: e.target.checked})
+        .then(res => console.log(res.data))
         
         e.target.parentElement.querySelector(".todoItems").style.textDecoration = e.target.checked ? 'line-through' : 'none';
+
+        
     }
 
     handleChange = (e) => {
@@ -56,15 +61,16 @@ export default class TodoLists extends Component {
         if(this.state.input){
             axios.post("https://jsonplaceholder.typicode.com/todos", {title: this.state.input})
             .then(response => {
-            this.setState({
-                todos: [...this.state.todos, response.data],
-                input: ""
-            });
-            e.target.previousElementSibling.style.display = "none";
-            e.target.nextElementSibling.style.display = "inline-block";
-            setTimeout(()=>{
-                e.target.nextElementSibling.style.display = "none";
-            },2000)
+                console.log(response.data)
+                this.setState({
+                    todos: [...this.state.todos, response.data],
+                    input: ""
+                });
+                e.target.previousElementSibling.style.display = "none";
+                e.target.nextElementSibling.style.display = "inline-block";
+                setTimeout(()=>{
+                    e.target.nextElementSibling.style.display = "none";
+                },2000)
         })
         } else {
             e.target.previousElementSibling.style.display = "inline-block"
@@ -149,7 +155,7 @@ export default class TodoLists extends Component {
                         
                         <li key={item.id} id={item.id} className="todosList">
                             <input type="checkbox" onClick={this.completeItem}/>
-                            <input type="text" defaultValue={item.title} className="todoItems" readOnly={true} onChange={this.handleUpdate}/> 
+                            <input type="text" defaultValue={item.title} className="todoItems" readOnly={true} onChange={this.handleUpdate} style={{textDecoration: item.checked ? "line-through" : "none"}}/> 
                             {/* <span id="deleteSpan" onClick={this.removeItem}>Delete</span> */}
                             <span>
                                 <i className="fas fa-pen editIcons" onClick={this.editTodos}></i>
