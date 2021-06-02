@@ -32,7 +32,9 @@ export default class Posts extends Component {
         fetch("https://jsonplaceholder.typicode.com/posts/" + e.target.parentElement.parentElement.id, data)
         .then(res => res.json())
         .then(jsonRes => console.log(jsonRes))
-        e.target.parentElement.parentElement.remove()
+        e.target.parentElement.parentElement.remove();
+
+        
     }
 
     createPostSection = ()=>{
@@ -66,12 +68,11 @@ export default class Posts extends Component {
                     <button onSubmit={this.addPostFunc} id="savePostButton">Save</button>
                 </form>
                     :
-                    null
+                    ""
                 }
 
-
-
-                {this.state.posts.map((item,index)=>{
+                <div>
+                    {this.state.posts.map((item,index)=>{
                     return (
                         <div className="postContainer" id={item.id} key={index}>
                             <h3 key={index} className="postTitle">{item.title}</h3>
@@ -86,8 +87,11 @@ export default class Posts extends Component {
                             <hr />
                         </div>
                         
-                    )
-                })}
+                        )
+                    })}
+                </div>
+
+                
             </div>
         )
     }

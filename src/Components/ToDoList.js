@@ -11,7 +11,8 @@ export default class TodoLists extends Component {
             todos: [],
             input: "",
             editClick: false,
-            updateInputValue: ""
+            updateInputValue: "",
+            oneClickEdit : false
         }
     }
 
@@ -81,19 +82,23 @@ export default class TodoLists extends Component {
     editTodos = (e) => {
         // console.log(this.state)
         // this.myRef.current.focus()
-        e.target.parentElement.parentElement.children[1].readOnly = false
-        e.target.parentElement.parentElement.children[1].classList.add("highlightInputs");
+
+        if(!this.state.oneClickEdit){
+            e.target.parentElement.parentElement.children[1].readOnly = false
+            e.target.parentElement.parentElement.children[1].classList.add("highlightInputs");
 
 
-        this.setState({editClick: true});
-        e.target.parentElement.classList.add("hideClassName")
-        e.target.parentElement.parentElement.children[3].classList.add("showClassName")
+            this.setState({editClick: true, oneClickEdit: !this.state.oneClickEdit});
+            e.target.parentElement.classList.add("hideClassName")
+            e.target.parentElement.parentElement.children[3].classList.add("showClassName")
+        }
+        
         
     }
 
     cancelChanges = (e)=> {
 
-        console.log(e.target.parentElement.previousElementSibling.previousElementSibling)
+        //console.log(e.target.parentElement.previousElementSibling.previousElementSibling)
 
         if(this.state.updateInputValue !== ""){
             e.target.parentElement.previousElementSibling.previousElementSibling.value = this.state.todos[e.target.parentElement.parentElement.id-1].title;
@@ -106,7 +111,7 @@ export default class TodoLists extends Component {
         e.target.parentElement.parentElement.children[1].classList.remove("highlightInputs");
         //console.log(e.target.parentElement.parentElement.children[2])
 
-
+        this.setState({oneClickEdit: !this.state.oneClickEdit})
 
 
     }
@@ -121,7 +126,7 @@ export default class TodoLists extends Component {
                 this.setState({...this.state, todos: this.state.todos.filter(item => {
                     return item.id == e.target.parentElement.parentElement.id ? item.title = this.state.updateInputValue : item
                 })});
-                this.setState({updateInputValue: ""});
+                this.setState({updateInputValue: "", oneClickEdit: !this.state.oneClickEdit});
             })
         }
         
