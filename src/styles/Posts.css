@@ -59,6 +59,9 @@
     padding: 0.5% 1%;
     width: 80px;
 }
+#cancelPostButton:hover{
+    cursor: pointer;
+}
 
 #savePostButton{
     margin-top: 1%;
@@ -68,7 +71,14 @@
     padding: 0.5% 1%;
     width: 80px;
 }
+#savePostButton:hover{
+    cursor: pointer;
+}
 
 #createPostButton {
+    margin-left: 3%;
+}
+
+#postHeader{
     margin-left: 3%;
 }

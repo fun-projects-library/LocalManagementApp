@@ -54,6 +54,7 @@ export default class Posts extends Component {
         
         return (
             <div>
+                <h2 id="postHeader">All Posts</h2>
                 <button onClick={this.createPostSection} id="createPostButton">Create Posts</button>
                 {this.state.createPostClicked ? 
                 <form>
