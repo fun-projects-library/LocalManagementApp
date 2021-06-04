@@ -217,8 +217,11 @@ class UsersList extends React.Component {
 
     if(this.state.name !== "" || this.state.username !== "" || this.state.email !== "" || this.state.phone !== ""){
       e.target.parentElement.parentElement.children[0].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].name;
+
       e.target.parentElement.parentElement.children[1].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].username;
+
       e.target.parentElement.parentElement.children[2].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].email;
+
       e.target.parentElement.parentElement.children[3].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].phone;
     }
 

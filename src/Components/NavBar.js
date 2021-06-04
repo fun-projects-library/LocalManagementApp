@@ -12,9 +12,9 @@ class NavBar extends React.Component{
             <nav>
                 <ul>
                     <li><Link to="/">Users List</Link></li>
-                    <li><Link to="/todos">Todo Lists</Link></li>
-                    <li><Link to="/posts">Posts</Link></li>
-                    <li><Link to="/albums">Albums</Link></li>
+                    <li><Link to="/Todos">Todo Lists</Link></li>
+                    <li><Link to="/Posts">Posts</Link></li>
+                    <li><Link to="/Albums">Albums</Link></li>
                 </ul>
             </nav>
             <div className="auth"><a href="https://www.youtube.com/watch?v=UXiAyIZjk7c" target="_blank" rel="noreferrer">Logout</a></div>
