@@ -68,7 +68,7 @@ export default function EditPost(props) {
     return (
         <div>
             <h2 id="editPostHeader">Edit Post - {id}</h2>
-            <div>
+            <div className="editPostContainer">
                 <label htmlFor="title">Title</label><br />
                 <input onChange={handleChange} placeholder="Enter your title!" id="titleEditPostInput" defaultValue={state.postForEdit.title}/> <br />
                 <label htmlFor="body">Body</label><br />

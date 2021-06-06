@@ -13,6 +13,7 @@ import ToDoList from './Components/ToDoList';
 import Posts from "./Components/Posts";
 import Albums from "./Components/Albums";
 import EditPost from "./Components/EditPost"
+import Home from "./Components/Home"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,7 +26,8 @@ ReactDOM.render(
         <Route exact path="/Todos"><ToDoList /></Route>
         <Route exact path="/Albums"><Albums /></Route>
         <Route path="/Posts/:id"><EditPost/></Route>
-        <Route exact path="/"><UsersList /></Route>
+        <Route exact path="/UsersList"><UsersList /></Route>
+        <Route exact path="/"><Home /></Route>
         {/* <Route render={()=>{
           return <h1 style={{margin: "3%"}}>Error Page</h1>
         }}/> */}
