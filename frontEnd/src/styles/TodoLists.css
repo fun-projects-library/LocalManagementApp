@@ -75,7 +75,7 @@ label{
 .cancelIcons {
     margin-left: 1%;
     font-size:large;
-    color: red;
+    color: rgb(141, 19, 19);
 }
 .cancelIcons:hover{
     cursor: pointer;
@@ -86,14 +86,3 @@ label{
 }
 
 
-.showClassName{
-    display: inline;
-}
-
-.hideClassName {
-    display: none;
-}
-
-.highlightInputs {
-    background-color: rgb(64, 187, 187);;
-}

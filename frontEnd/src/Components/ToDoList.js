@@ -127,8 +127,10 @@ export default class TodoLists extends Component {
                 })});
                 this.setState({updateInputValue: "", oneClickEdit: !this.state.oneClickEdit});
             })
+        } else {
+            this.setState({updateInputValue: "", oneClickEdit: !this.state.oneClickEdit});
         }
-        this.setState({updateInputValue: "", oneClickEdit: !this.state.oneClickEdit});
+        
         e.target.parentElement.parentElement.children[1].readOnly = true;
         e.target.parentElement.parentElement.children[1].classList.remove("highlightInputs");
         e.target.parentElement.parentElement.children[3].classList.remove("showClassName");
@@ -154,10 +156,10 @@ export default class TodoLists extends Component {
                 <button id="addButton" onClick={this.handleAddInput}>ADD</button>
                 <span id="userSuccesful">Succesfully added!</span>
                 <ul>
-                {this.state.todos.map((item)=>{
+                {this.state.todos.map((item,index)=>{
                     return(
                         
-                        <li key={item.id} id={item.id} className="todosList">
+                        <li key={index} id={item.id} className="todosList">
                             <input type="checkbox" onClick={this.completeItem}/>
                             <input type="text" defaultValue={item.title} className="todoItems" readOnly={true} onChange={this.handleUpdate} style={{textDecoration: item.checked ? "line-through" : "none"}}/> 
                             {/* <span id="deleteSpan" onClick={this.removeItem}>Delete</span> */}
