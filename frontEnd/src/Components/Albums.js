@@ -1,5 +1,7 @@
+import axios from 'axios'
 import React, { Component } from 'react'
 import '../styles/Albums.css'
+
 // import AlbumForm from "./AlbumForm"
 
 
@@ -10,6 +12,7 @@ import '../styles/Albums.css'
 
         this.state = {
             albums: [],
+            input: "",
             showForm: false
         }
     }
@@ -20,25 +23,68 @@ import '../styles/Albums.css'
 
     getAlbums = () => {
         fetch('https://jsonplaceholder.typicode.com/albums')
-  .then(response => response.json())
-  .then(json => {
-      //console.log(json)
-      return this.setState({albums: json})
-  }
-    )
+        .then(response => response.json())
+        .then(json => {
+            //console.log(json)
+            return this.setState({albums: json})
+        })
     }
+
+    showAddAlbum = () => {
+        this.setState({showForm : !this.state.showForm, input: ""})
+    }
+
+    cancelAddAlbum = () => {
+        this.setState({showForm : !this.state.showForm, input: ""})
+    }
+    handleChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+        
+    }
+    approveAddAlbum = (e) => {
+        if(this.state.input !== ""){
+            axios.post('https://jsonplaceholder.typicode.com/albums', {title:this.state.input})
+            .then(res => {
+                console.log(res.data)
+                this.setState({albums: [...this.state.albums, res.data]});
+
+                e.target.nextElementSibling.style.display = "inline-block";
+                e.target.previousElementSibling.previousElementSibling.style.display = "none"
+                setTimeout(()=>{
+                    e.target.nextElementSibling.style.display = "none";
+                },2000)
+            })
+        } else {
+            e.target.previousElementSibling.previousElementSibling.style.display = "inline-block"
+        }
+        
+    }
+    
 
     render() {
         
         return (
             <div>
-             <h2>Albums List</h2>
-             <button>Add</button>
+             <h1 id="albumHeader">Albums List</h1>
+             <button id="addButtonAlbums" onClick={this.showAddAlbum}>Add</button>
+             {this.state.showForm ? 
+             <div className="addAlbumDiv">
+                <input name="input" id="albumInput" value={this.state.input} onChange={this.handleChange} placeholder="Enter your item!"></input>
+                <span id="albumRequire">*required</span>
+
+                <i className="fas fa-window-close cancelAlbumAdd" onClick={this.cancelAddAlbum}></i>
+                <i className="fas fa-check-square approveAlbumAdd" onClick={this.approveAddAlbum}></i>
+
+                <span id="albumSuccesful">Succesfully added!</span>
+             </div> : ""}
+             
              <div className='album-container'>
              {this.state.albums.map((item,index) => {
-                 return <a href="https://www.youtube.com/watch?v=UXiAyIZjk7c" target="_blank" rel="noreferrer" className='container' key={index}>
-                     {item.title}
-                 </a>
+                 return (
+                    <div className='container' key={index}>
+                        <span className="albumItem">{item.title}</span>
+                    </div>
+                 ) 
              })}
              </div>
             
