@@ -6,7 +6,7 @@ export default function Home() {
         <div>
             <h1 id="homeHeader">Welcome to Personal Task Manager</h1>
             <p id="homeParag">
-                You will find everything you need here to organize your life in an excellent way...
+                You will be taken care of here in order to organize your life in an excellent way...
                 <br/>
                 Let's dive in!
             </p>

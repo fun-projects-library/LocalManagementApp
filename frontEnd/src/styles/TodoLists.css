@@ -85,4 +85,14 @@ label{
     display: none;
 }
 
+.showClassName{
+    display: inline;
+}
 
+.hideClassName {
+    display: none;
+}
+
+.highlightInputs {
+    background-color: rgb(64, 187, 187);;
+} 
