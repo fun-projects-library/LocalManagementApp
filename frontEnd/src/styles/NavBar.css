@@ -10,25 +10,33 @@
 
 nav li{
     display: inline-block;
-    padding: 5px;
-    font-size: 12px;
+    padding: 1px;
+    margin-left: 4%;
 }
 
 .auth{
     margin-left: auto;
     
 }
+.navBarUL{
+    width: 450px;
+}
 
 .brand {
     color: black;
     font-size: 28px;
     text-decoration: none;
+    
 }
 
 .navBarLinks{
     text-decoration: none;
     color: black;
     font-size: 14px;
+}
+.navBarLinks:hover{
+    font-size: 150%;
+    font-weight: bold;
 }
 
 .activeClassLinks{

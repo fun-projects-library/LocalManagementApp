@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
+body{
+    font-family: 'Roboto Mono', monospace;
+}
 
 #homeHeader{
     text-align: center;

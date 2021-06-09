@@ -10,7 +10,7 @@ class NavBar extends React.Component{
         <header className="header">
             <div ><NavLink to="/" className="brand">PTM</NavLink></div>
             <nav>
-                <ul>
+                <ul className="navBarUL">
                     <li><NavLink to="/UsersList" className="navBarLinks" activeClassName="activeClassLinks">Users List</NavLink></li>
                     <li><NavLink to="/Todos" className="navBarLinks" activeClassName="activeClassLinks">Todo Lists</NavLink></li>
                     <li><NavLink to="/Posts" className="navBarLinks" activeClassName="activeClassLinks">Posts</NavLink></li>
