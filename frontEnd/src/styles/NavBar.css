@@ -16,7 +16,20 @@ nav li{
 
 .auth{
     margin-left: auto;
+    display: flex;
+    margin-right: 3%;
+}
+#passwordInput{
+    padding: 3%;
+    margin-right: 8%;
+    border-radius: 0.35rem;
     
+}
+#loginSpan{
+    font-size: 22px;
+}
+#loginSpan:hover{
+    cursor: pointer;
 }
 .navBarUL{
     width: 450px;
@@ -24,7 +37,7 @@ nav li{
 
 .brand {
     color: black;
-    font-size: 28px;
+    font-size: 32px;
     text-decoration: none;
     
 }
@@ -32,7 +45,7 @@ nav li{
 .navBarLinks{
     text-decoration: none;
     color: black;
-    font-size: 14px;
+    font-size: 16px;
 }
 .navBarLinks:hover{
     font-size: 150%;
@@ -42,3 +55,5 @@ nav li{
 .activeClassLinks{
     text-decoration: underline;
 }
+
+
