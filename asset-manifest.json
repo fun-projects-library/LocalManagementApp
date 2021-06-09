@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/LocalManagementApp/static/css/main.7b8880b9.chunk.css",
-    "main.js": "/LocalManagementApp/static/js/main.7c336b95.chunk.js",
-    "main.js.map": "/LocalManagementApp/static/js/main.7c336b95.chunk.js.map",
+    "main.js": "/LocalManagementApp/static/js/main.7d7dcccb.chunk.js",
+    "main.js.map": "/LocalManagementApp/static/js/main.7d7dcccb.chunk.js.map",
     "runtime-main.js": "/LocalManagementApp/static/js/runtime-main.3eda48ac.js",
     "runtime-main.js.map": "/LocalManagementApp/static/js/runtime-main.3eda48ac.js.map",
     "static/js/2.10da9853.chunk.js": "/LocalManagementApp/static/js/2.10da9853.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3eda48ac.js",
     "static/js/2.10da9853.chunk.js",
     "static/css/main.7b8880b9.chunk.css",
-    "static/js/main.7c336b95.chunk.js"
+    "static/js/main.7d7dcccb.chunk.js"
   ]
 }
