@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/LocalManagementApp/static/css/main.e7390168.chunk.css",
-    "main.js": "/LocalManagementApp/static/js/main.21c25a74.chunk.js",
-    "main.js.map": "/LocalManagementApp/static/js/main.21c25a74.chunk.js.map",
+    "main.css": "/LocalManagementApp/static/css/main.acb121a6.chunk.css",
+    "main.js": "/LocalManagementApp/static/js/main.b556e2f4.chunk.js",
+    "main.js.map": "/LocalManagementApp/static/js/main.b556e2f4.chunk.js.map",
     "runtime-main.js": "/LocalManagementApp/static/js/runtime-main.3eda48ac.js",
     "runtime-main.js.map": "/LocalManagementApp/static/js/runtime-main.3eda48ac.js.map",
-    "static/js/2.10da9853.chunk.js": "/LocalManagementApp/static/js/2.10da9853.chunk.js",
-    "static/js/2.10da9853.chunk.js.map": "/LocalManagementApp/static/js/2.10da9853.chunk.js.map",
+    "static/js/2.920b7114.chunk.js": "/LocalManagementApp/static/js/2.920b7114.chunk.js",
+    "static/js/2.920b7114.chunk.js.map": "/LocalManagementApp/static/js/2.920b7114.chunk.js.map",
     "static/js/3.897e1d72.chunk.js": "/LocalManagementApp/static/js/3.897e1d72.chunk.js",
     "static/js/3.897e1d72.chunk.js.map": "/LocalManagementApp/static/js/3.897e1d72.chunk.js.map",
     "index.html": "/LocalManagementApp/index.html",
-    "static/css/main.e7390168.chunk.css.map": "/LocalManagementApp/static/css/main.e7390168.chunk.css.map",
-    "static/js/2.10da9853.chunk.js.LICENSE.txt": "/LocalManagementApp/static/js/2.10da9853.chunk.js.LICENSE.txt"
+    "static/css/main.acb121a6.chunk.css.map": "/LocalManagementApp/static/css/main.acb121a6.chunk.css.map",
+    "static/js/2.920b7114.chunk.js.LICENSE.txt": "/LocalManagementApp/static/js/2.920b7114.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3eda48ac.js",
-    "static/js/2.10da9853.chunk.js",
-    "static/css/main.e7390168.chunk.css",
-    "static/js/main.21c25a74.chunk.js"
+    "static/js/2.920b7114.chunk.js",
+    "static/css/main.acb121a6.chunk.css",
+    "static/js/main.b556e2f4.chunk.js"
   ]
 }
