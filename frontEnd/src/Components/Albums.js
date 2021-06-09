@@ -93,6 +93,7 @@ import '../styles/Albums.css'
 
     saveChanges = (e) => {
 
+        e.target.parentElement.previousElementSibling.contentEditable = false;
         e.target.parentElement.previousElementSibling.classList.remove("highlightInputs");
         e.target.parentElement.style.display = "none";
         this.setState({oneClicked: !this.state.oneClicked});
