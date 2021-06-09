@@ -85,7 +85,7 @@ export default class TodoLists extends Component {
         if(!this.state.oneClickEdit){
             e.target.parentElement.parentElement.children[1].readOnly = false
             e.target.parentElement.parentElement.children[1].classList.add("highlightInputs");
-            console.log(this.state)
+            // console.log(this.state)
 
             this.setState({editClick: true, oneClickEdit: !this.state.oneClickEdit});
             e.target.parentElement.classList.add("hideClassName")

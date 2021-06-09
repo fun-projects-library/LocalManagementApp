@@ -13,7 +13,8 @@ import '../styles/Albums.css'
         this.state = {
             albums: [],
             input: "",
-            showForm: false
+            showForm: false,
+            oneClicked: false,
         }
     }
 
@@ -59,6 +60,19 @@ import '../styles/Albums.css'
         }
         
     }
+
+    showButtons = (e)=> {
+        if(!this.state.oneClicked){
+            e.target.previousElementSibling.style.display = "block";
+            this.setState({oneClicked: !this.state.oneClicked})
+        }
+    }
+
+    editFunc = (e) => {
+        e.target.parentElement.style.display = "none"
+        e.target.parentElement.nextElementSibling.nextElementSibling.style.display = "block"
+        //console.log(e.target.parentElement.nextElementSibling)
+    }
     
 
     render() {
@@ -82,7 +96,16 @@ import '../styles/Albums.css'
              {this.state.albums.map((item,index) => {
                  return (
                     <div className='container' key={index}>
-                        <span className="albumItem">{item.title}</span>
+                        <div className="albumBothButtons">
+                            <span className="editAlbumBtn" onClick={this.editFunc}>Edit </span>|
+                            <span className="deleteAlbumBtn"> Delete</span>
+                        </div>
+                        
+                        <p className="albumItem" onClick={this.showButtons}>{item.title}</p>
+                        <div className="secondAlbumButtons">
+                            <button className="saveAlbumChanges">Save</button>
+                            <button className="cancelAlbumChanges">Cancel</button>
+                        </div>
                     </div>
                  ) 
              })}
