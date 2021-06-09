@@ -64,14 +64,45 @@ import '../styles/Albums.css'
     showButtons = (e)=> {
         if(!this.state.oneClicked){
             e.target.previousElementSibling.style.display = "block";
-            this.setState({oneClicked: !this.state.oneClicked})
+            this.setState({oneClicked: !this.state.oneClicked});
+            
+            //console.log(e)
         }
     }
 
     editFunc = (e) => {
+
         e.target.parentElement.style.display = "none"
-        e.target.parentElement.nextElementSibling.nextElementSibling.style.display = "block"
-        //console.log(e.target.parentElement.nextElementSibling)
+        e.target.parentElement.nextElementSibling.nextElementSibling.style.display = "block";
+        e.target.parentElement.nextElementSibling.contentEditable = true;
+        e.target.parentElement.nextElementSibling.classList.add("highlightInputs")
+        //console.log(e)
+    }
+    deleteAlbum = (e) => {
+        const data = {
+            method: 'DELETE',
+        }
+        
+        fetch('https://jsonplaceholder.typicode.com/albums/' + e.target.parentElement.parentElement.id, data)
+        .then(response => response.json())
+        .then(jsonResponse => console.log(jsonResponse))
+        e.target.parentElement.parentElement.remove();
+
+        this.setState({oneClicked: !this.state.oneClicked});
+    }
+
+    saveChanges = (e) => {
+
+        e.target.parentElement.previousElementSibling.classList.remove("highlightInputs");
+        e.target.parentElement.style.display = "none";
+        this.setState({oneClicked: !this.state.oneClicked});
+    }
+    cancelChanges = (e) => {
+        e.target.parentElement.previousElementSibling.contentEditable = false;
+        e.target.parentElement.previousElementSibling.classList.remove("highlightInputs");
+        e.target.parentElement.style.display = "none";
+        this.setState({oneClicked: !this.state.oneClicked});
+        
     }
     
 
@@ -95,16 +126,16 @@ import '../styles/Albums.css'
              <div className='album-container'>
              {this.state.albums.map((item,index) => {
                  return (
-                    <div className='container' key={index}>
+                    <div className='container' key={index} id={item.id}>
                         <div className="albumBothButtons">
                             <span className="editAlbumBtn" onClick={this.editFunc}>Edit </span>|
-                            <span className="deleteAlbumBtn"> Delete</span>
+                            <span className="deleteAlbumBtn" onClick={this.deleteAlbum}> Delete</span>
                         </div>
                         
-                        <p className="albumItem" onClick={this.showButtons}>{item.title}</p>
+                        <span className="albumItem" onClick={this.showButtons} contentEditable={false}>{item.title}</span>
                         <div className="secondAlbumButtons">
-                            <button className="saveAlbumChanges">Save</button>
-                            <button className="cancelAlbumChanges">Cancel</button>
+                            <button className="saveAlbumChanges" onClick={this.saveChanges}>Save</button>
+                            <button className="cancelAlbumChanges" onClick={this.cancelChanges}>Cancel</button>
                         </div>
                     </div>
                  ) 
