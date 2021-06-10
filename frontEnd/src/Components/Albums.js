@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import '../styles/Albums.css'
 
-// import AlbumForm from "./AlbumForm"
 
 
 
@@ -14,7 +13,7 @@ import '../styles/Albums.css'
             albums: [],
             input: "",
             showForm: false,
-            oneClicked: false,
+            oneClicked: false
         }
     }
 
@@ -92,6 +91,20 @@ import '../styles/Albums.css'
     }
 
     saveChanges = (e) => {
+        
+        const updateInputValue = e.target.parentElement.previousElementSibling.innerHTML
+        const parentID = parseInt(e.target.parentElement.parentElement.id);
+       
+        axios.put("https://jsonplaceholder.typicode.com/albums/" + parentID, { title: updateInputValue})
+        .then( res => console.log(res.data) )
+        .then(()=>{
+            
+            this.setState({...this.state, albums: this.state.albums.filter(item => {
+                return item.id === parentID ? item.title = updateInputValue : item
+            })});
+           
+        })
+        .catch(err=>{console.log(err)});
 
         e.target.parentElement.previousElementSibling.contentEditable = false;
         e.target.parentElement.previousElementSibling.classList.remove("highlightInputs");
@@ -99,13 +112,15 @@ import '../styles/Albums.css'
         this.setState({oneClicked: !this.state.oneClicked});
     }
     cancelChanges = (e) => {
+        
+        const indexNumber = e.target.parentElement.parentElement.id;
+        e.target.parentElement.previousElementSibling.innerHTML = this.state.albums[indexNumber - 1].title; 
         e.target.parentElement.previousElementSibling.contentEditable = false;
         e.target.parentElement.previousElementSibling.classList.remove("highlightInputs");
         e.target.parentElement.style.display = "none";
         this.setState({oneClicked: !this.state.oneClicked});
-        
     }
-    
+
 
     render() {
         

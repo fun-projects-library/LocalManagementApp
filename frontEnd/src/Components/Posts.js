@@ -60,12 +60,12 @@ export default function Posts() {
 
     return (
         <div>
-            <h2 id="postHeader">All Posts</h2>
+            <h1 id="postHeader">All Posts</h1>
 
             <button onClick={createPostSection} id="createPostButton">Create Posts</button>
 
             {state.createPostClicked ? 
-            <form>
+            <form id="postsForm">
                 <label htmlFor="title">Title</label><br />
                 <input placeholder="Enter your title!" id="titleInput"/> <br />
                 <label htmlFor="body">Body</label><br />
