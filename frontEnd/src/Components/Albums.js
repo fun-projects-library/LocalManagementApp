@@ -46,7 +46,7 @@ import '../styles/Albums.css'
             axios.post('https://jsonplaceholder.typicode.com/albums', {title:this.state.input})
             .then(res => {
                 console.log(res.data)
-                this.setState({albums: [...this.state.albums, res.data]});
+                this.setState({albums: [...this.state.albums, res.data], input: ""});
 
                 e.target.nextElementSibling.style.display = "inline-block";
                 e.target.previousElementSibling.previousElementSibling.style.display = "none"
@@ -162,11 +162,8 @@ import '../styles/Albums.css'
             </div>
         )
          
+    }
 }
- }
-    
-
-
 export default Albums;
 
 

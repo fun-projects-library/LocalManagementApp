@@ -64,8 +64,7 @@
 }
 
 #savePostButton{
-    margin-top: 1%;
-    margin-left: 1%;
+    margin: 1% 1% 0 1%;
     background-color: green;
     color: white;
     padding: 0.5% 1%;
@@ -88,5 +87,5 @@
     font-size: 20px;
 }
 #postsForm input{
-    margin: 0.5% 3%;
+    margin: 0.5% 0.5% 0.5% 3%;
 }

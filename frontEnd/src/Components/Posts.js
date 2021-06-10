@@ -1,15 +1,20 @@
-import {useReducer, useEffect } from 'react';
+import axios from 'axios';
+import {useReducer, useEffect, useRef } from 'react';
 import { Link, useRouteMatch } from "react-router-dom";
 import "../styles/Posts.css";
 
 
 
-const initalState = { posts: [], createPostClicked: false}
+const initalState = { posts: [], createPostClicked: false, title: "", body: ""}
+
 
 const reducer = (state, action) => {
     switch(action.type){
         case "setPosts" : return {...state, posts: action.payload};
+        case "addPost" : return {...state, posts: [...state.posts, action.payload], title: "", body: ""};
         case "createSection" : return {...state, createPostClicked: action.payload};
+        case "title" : return {...state, title: action.payload};
+        case "body" : return {...state, body: action.payload};
         default:
             return state;
     }
@@ -18,6 +23,10 @@ const reducer = (state, action) => {
 
 export default function Posts() {
     
+    const titleRef = useRef();
+    const bodyRef = useRef();
+    const succesfulRef = useRef()
+
     const [state, dispatch] = useReducer(reducer, initalState);
     let { url } = useRouteMatch();
     //console.log(path, url)
@@ -50,11 +59,36 @@ export default function Posts() {
     }
 
     const addPostFunc = () => {
+        let item = {title: state.title, body:state.body};
+        
+        if(item.title === ""){
+            titleRef.current.style.display = "inline-block";
+        } else if(item.body === ""){
+            bodyRef.current.style.display = "inline-block";
+        } else {
+            axios.post("https://jsonplaceholder.typicode.com/posts", item)
+            .then(res => {
+                console.log(res.data);
+                dispatch({type: "addPost", payload: res.data});
+                titleRef.current.style.display = "none"
+                bodyRef.current.style.display = "none";
+                succesfulRef.current.style.display = "inline-block";
+                setTimeout(()=>{
+                    succesfulRef.current.style.display = "none";
+                },2000)
+            })
+            .catch(err=>{console.log(err)})
+        }
 
+        
     }
 
     const cancelPostAdding = () => {
         dispatch({type: "createSection", payload: !state.createPostClicked})
+    }
+
+    const handleChange = (e) => {
+        dispatch({type: e.target.name, payload: e.target.value})
     }
 
 
@@ -65,14 +99,19 @@ export default function Posts() {
             <button onClick={createPostSection} id="createPostButton">Create Posts</button>
 
             {state.createPostClicked ? 
-            <form id="postsForm">
+            <div id="postsForm">
                 <label htmlFor="title">Title</label><br />
-                <input placeholder="Enter your title!" id="titleInput"/> <br />
+                <input placeholder="Enter your title!" id="titleInput" name="title" onChange={handleChange} value={state.title}/> <span id="titleRequire" className="requires" ref={titleRef}>*required</span> 
+                <br />
+
                 <label htmlFor="body">Body</label><br />
-                <input placeholder="Enter your post!" id="bodyInput"/> <br />
+                <input placeholder="Enter your post!" id="bodyInput" name="body" onChange={handleChange} value={state.body}/> <span id="bodyRequire" className="requires" ref={bodyRef}>*required</span> 
+                <br />
+
                 <button onClick={cancelPostAdding} id="cancelPostButton">Cancel</button>
-                <button onSubmit={addPostFunc} id="savePostButton">Save</button>
-            </form>
+                <button onClick={addPostFunc} id="savePostButton">Save</button>
+                <span id="userSuccesful" ref={succesfulRef}>Succesfully added!</span>
+            </div>
                 :
                 ""
             }
@@ -109,12 +148,6 @@ export default function Posts() {
         </div>
     )
 }
-
-
-
-
-
-
 
 
 

@@ -74,54 +74,13 @@ class UsersList extends React.Component {
       e.target.parentElement.parentElement.children[i].children[0].readOnly = true
     };
     e.target.parentElement.style.display = "none";
-    
-
-    // let item2 = {}
-
-
-    // if(this.state.name !== ""){
-    //   item2 = { name: this.state.name }
-    // } else if(this.state.username !== ""){
-    //   item2 = { username: this.state.username }
-    // } else if(this.state.email !== ""){
-    //   item2 = { email: this.state.email }
-    // } else if(this.state.phone !== ""){
-    //   item2 = { phone: this.state.phone }
-    // }
-
-
-    // axios.put("https://jsonplaceholder.typicode.com/users/" + e.target.parentElement.parentElement.id, item2 )
-    // .then(response => {console.log(response.data)})
-
-
-
-
-
-
 
 
     
     let item = {}
-    
-    // if(this.state.name !== ""){
-    //   item = {name: this.state.name};
-    //   this.setState({ name : ""})
-    // } else if(this.state.username !== ""){
-    //   item = {username: this.state.username};
-    //   this.setState({ username : ""})
-    // } else if(this.state.email !== ""){
-    //   item = {email: this.state.email};
-    //   this.setState({ email : ""})
-    // } else if(this.state.phone !== ""){
-    //   item = {phone: this.state.phone};
-    //   this.setState({ phone : ""})
-    // }
 
     if(this.state.name !== "" || this.state.username !== "" || this.state.email !== "" || this.state.phone !== ""){
       item = {name: this.state.name, username: this.state.username, email: this.state.email, phone: this.state.phone};
-      // item = {username: this.state.username};
-      // item = {email: this.state.email};
-      // item = {phone: this.state.phone};
       this.setState({ name : "" , username: "", email: "", phone: ""})
     }
 
@@ -138,17 +97,6 @@ class UsersList extends React.Component {
       delete item.phone
     }
 
-
-    // console.log(item)
-    
-
-    // if(item){
-    //     axios.put("https://jsonplaceholder.typicode.com/users/" + e.target.parentElement.parentElement.id, item)
-    //     .then(res=>{
-    //     console.log(res.data)
-    //   }).then(()=>{console.log(this.state)})
-      
-    // }
 
     const parentID = parseInt(e.target.parentElement.parentElement.id);
     
@@ -202,18 +150,7 @@ class UsersList extends React.Component {
   }
 
   cancelChanges(e){
-    
 
-    // if(this.state.name !== ""){
-    //   e.target.parentElement.parentElement.children[0].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].name;
-    //   console.log(this.state.users)
-    // } else if(this.state.username !== ""){
-    //   e.target.parentElement.parentElement.children[1].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].username;
-    // } else if(this.state.email !== ""){
-    //   e.target.parentElement.parentElement.children[2].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].email;
-    // } else if(this.state.phone !== ""){
-    //   e.target.parentElement.parentElement.children[3].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].phone;
-    // }
 
     if(this.state.name !== "" || this.state.username !== "" || this.state.email !== "" || this.state.phone !== ""){
       e.target.parentElement.parentElement.children[0].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].name;
