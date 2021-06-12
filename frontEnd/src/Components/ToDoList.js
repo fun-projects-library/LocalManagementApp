@@ -21,7 +21,7 @@ export default class TodoLists extends Component {
     }
 
     todosFetch(){
-        fetch('https://jsonplaceholder.typicode.com/todos')
+        fetch('http://localhost:8080/api/todos')
         .then(response => response.json())
         .then(json => {
             this.setState({
@@ -35,7 +35,7 @@ export default class TodoLists extends Component {
             method: 'DELETE',
         }
         
-        fetch('https://jsonplaceholder.typicode.com/todos/' + e.target.parentElement.parentElement.id, data)
+        fetch('http://localhost:8080/api/todos/' + e.target.parentElement.parentElement.id, data)
         .then(response => response.json())
         .then(jsonResponse => console.log(jsonResponse))
         e.target.parentElement.parentElement.remove();
@@ -44,11 +44,15 @@ export default class TodoLists extends Component {
 
     completeItem =(e)=>{
         // if condition is written in the inline CSS!!
-
-        axios.put("https://jsonplaceholder.typicode.com/todos/" + e.target.parentElement.id, {completed: e.target.checked})
-        .then(res => console.log(res.data))
+        console.log(e.target.checked)
+        axios.put("http://localhost:8080/api/todos/" + e.target.parentElement.id, {completed: e.target.checked})
+        .then(res => {
+            console.log(res.data);
+            e.target.checked = !e.target.checked;
+            e.target.parentElement.querySelector(".todoItems").style.textDecoration = e.target.checked ? 'line-through' : 'none';
+        })
         
-        e.target.parentElement.querySelector(".todoItems").style.textDecoration = e.target.checked ? 'line-through' : 'none';
+        // e.target.parentElement.querySelector(".todoItems").style.textDecoration = e.target.checked ? 'line-through' : 'none';
 
         
     }
@@ -60,7 +64,7 @@ export default class TodoLists extends Component {
     handleAddInput = (e) => {
 
         if(this.state.input){
-            axios.post("https://jsonplaceholder.typicode.com/todos", {title: this.state.input})
+            axios.post("http://localhost:8080/api/todos", {title: this.state.input})
             .then(response => {
                 console.log(response.data)
                 this.setState({
@@ -120,7 +124,7 @@ export default class TodoLists extends Component {
         
 
         if(this.state.updateInputValue !== ""){
-            axios.put("https://jsonplaceholder.typicode.com/todos/" + parentID, { title: this.state.updateInputValue})
+            axios.put("http://localhost:8080/api/todos/" + parentID, { title: this.state.updateInputValue})
             .then( res => console.log(res.data) )
             .then(()=>{
                 this.setState({...this.state, todos: this.state.todos.filter(item => {
@@ -161,8 +165,8 @@ export default class TodoLists extends Component {
                     return(
                         
                         <li key={index} id={item.id} className="todosList">
-                            <input type="checkbox" onClick={this.completeItem}/>
-                            <input type="text" defaultValue={item.title} className="todoItems" readOnly={true} onChange={this.handleUpdate} style={{textDecoration: item.checked ? "line-through" : "none"}}/> 
+                            <input type="checkbox" onChange={this.completeItem} checked={item.completed}/>
+                            <input type="text" defaultValue={item.title} className="todoItems" readOnly={true} onChange={this.handleUpdate} style={{textDecoration: item.completed ? "line-through" : "none"}}/> 
                             {/* <span id="deleteSpan" onClick={this.removeItem}>Delete</span> */}
                             <span>
                                 <i className="fas fa-pen editIcons" onClick={this.editTodos}></i>

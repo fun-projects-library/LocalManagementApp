@@ -33,6 +33,7 @@
     padding: 2%;
     border-radius: 0.25rem;
     font-size: 15px;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .usersListTR{

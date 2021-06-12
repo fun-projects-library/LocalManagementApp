@@ -1,0 +1,3 @@
+module.exports = {
+    url: "mongodb+srv://userName:<password>@cluster0.ph8hs.mongodb.net/personalTaskManagement?retryWrites=true&w=majority"
+};
