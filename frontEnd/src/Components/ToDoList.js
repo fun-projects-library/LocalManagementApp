@@ -37,24 +37,34 @@ export default class TodoLists extends Component {
         
         fetch('http://localhost:8080/api/todos/' + e.target.parentElement.parentElement.id, data)
         .then(response => response.json())
-        .then(jsonResponse => console.log(jsonResponse))
-        e.target.parentElement.parentElement.remove();
+        .then(jsonResponse => {
+            console.log(jsonResponse)
+            e.target.parentElement.parentElement.remove();
+        })
+       
 
     }
 
     completeItem =(e)=>{
         // if condition is written in the inline CSS!!
-        console.log(e.target.checked)
-        axios.put("http://localhost:8080/api/todos/" + e.target.parentElement.id, {completed: e.target.checked})
-        .then(res => {
-            console.log(res.data);
-            e.target.checked = !e.target.checked;
-            e.target.parentElement.querySelector(".todoItems").style.textDecoration = e.target.checked ? 'line-through' : 'none';
-        })
         
-        // e.target.parentElement.querySelector(".todoItems").style.textDecoration = e.target.checked ? 'line-through' : 'none';
-
+        if(e.target.checked){
+            axios.put("http://localhost:8080/api/todos/" + e.target.parentElement.id, {completed: e.target.checked})
+            .then(res => {
+                console.log(res.data);
+                e.target.checked = true;
+                e.target.parentElement.querySelector(".todoItems").style.textDecoration = e.target.checked ? 'line-through' : 'none';
+            })
+        } else {
+            axios.put("http://localhost:8080/api/todos/" + e.target.parentElement.id, {completed: e.target.checked})
+            .then(res => {
+                console.log(res.data);
+                e.target.checked = false;
+                e.target.parentElement.querySelector(".todoItems").style.textDecoration = e.target.checked ? 'line-through' : 'none';
+            })
+        }
         
+        // e.target.parentElement.querySelector(".todoItems").style.textDecoration = e.target.checked ? 'line-through' : 'none';  
     }
 
     handleChange = (e) => {
