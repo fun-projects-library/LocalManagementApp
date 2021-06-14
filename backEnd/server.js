@@ -39,6 +39,7 @@ app.get("/", (req, res) => {
 
 // Include all other routes 
 require("./app/routes/todos.routes")(app);
+require("./app/routes/usersList.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

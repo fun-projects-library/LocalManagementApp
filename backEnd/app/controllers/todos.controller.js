@@ -17,14 +17,14 @@ exports.create = (req, res) => {
 
   // Save Todo in the database
   todo
-    .save(todo)
+    .save()
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Tutorial."
+          err.message || "Some error occurred while creating the Todo Item."
       });
     });
 };
@@ -65,9 +65,9 @@ exports.update = (req, res) => {
         .then(data => {
           if (!data) {
             res.status(404).send({
-              message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found!`
+              message: `Cannot update item with id=${id}. Maybe item was not found!`
             });
-          } else res.send({ message: "Tutorial was updated successfully." });
+          } else res.send({ message: "Todo item was updated successfully." });
         })
         .catch(err => {
           res.status(500).send({
@@ -85,7 +85,7 @@ exports.delete = (req, res) => {
       res.status(404).send({
         message: `Cannot delete Todo Item with id=${id}. Maybe item was not found!`
       });
-    } else res.send({ message: "Todo Item was updated successfully." });
+    } else res.send({ message: "Todo Item was deleted successfully." });
   })
   .catch(err => {
     res.status(500).send({

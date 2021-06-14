@@ -41,7 +41,7 @@ class UsersList extends React.Component {
     
     //console.log(this.state);
 
-    fetch("https://jsonplaceholder.typicode.com/users/" + e.target.parentElement.parentElement.id, data)
+    fetch("http://localhost:8080/api/usersList/" + e.target.parentElement.parentElement.id, data)
     .then((res) => res.json())
     .then(jsonRes => console.log(jsonRes))
 
@@ -98,7 +98,7 @@ class UsersList extends React.Component {
     }
 
 
-    const parentID = parseInt(e.target.parentElement.parentElement.id);
+    //const parentID = parseInt(e.target.parentElement.parentElement.id);
     
     const data = {
       method: 'PUT',
@@ -109,32 +109,32 @@ class UsersList extends React.Component {
     }
 
     if(item.name || item.username || item.email || item.phone){
-      fetch("https://jsonplaceholder.typicode.com/users/" + parentID, data)
+      fetch("http://localhost:8080/api/usersList/" + e.target.parentElement.parentElement.id, data)
       .then((res)=> res.json())
       .then(jsonResponse => {
         console.log(jsonResponse);
         
         if(jsonResponse.name){
           this.setState({...this.state, users: this.state.users.filter(item => {
-            return item.id === parentID ? item.name = jsonResponse.name : item
+            return item.id == e.target.parentElement.parentElement.id ? item.name = jsonResponse.name : item
           })});
         }
 
         if(jsonResponse.username){
           this.setState({...this.state, users: this.state.users.filter(item => {
-            return item.id === parentID ? item.username = jsonResponse.username : item
+            return item.id == e.target.parentElement.parentElement.id ? item.username = jsonResponse.username : item
           })});
         }
 
         if(jsonResponse.email){
           this.setState({...this.state, users: this.state.users.filter(item => {
-            return item.id === parentID ? item.email = jsonResponse.email : item
+            return item.id == e.target.parentElement.parentElement.id ? item.email = jsonResponse.email : item
           })});
         }
         
         if(jsonResponse.phone){
           this.setState({...this.state, users: this.state.users.filter(item => {
-            return item.id === parentID ? item.phone = jsonResponse.phone : item
+            return item.id == e.target.parentElement.parentElement.id ? item.phone = jsonResponse.phone : item
           })});
         }
         
@@ -237,11 +237,19 @@ class UsersList extends React.Component {
         </div>
       )
     }
-    return <div>There is no users exist</div>
+    return (
+      <>
+        <button onClick={this.handleClick} id="addButton">Add User</button>
+          <div id="formComponent">
+            {this.state.clicked ? <Form handleClick={this.handleClick} addUser={this.addUser}/> : null}
+          </div>
+        <div>There is no users exist</div>
+      </>
+    )
   }
 
   fetchUsersList = () => {
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch('http://localhost:8080/api/usersList')
       .then(response => response.json())
       .then(json => {
         this.setState({

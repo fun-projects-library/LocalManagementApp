@@ -31,7 +31,7 @@ export default class Form extends Component {
         } else if(this.state.phone === ""){
             e.target.parentElement.children[7].style.display = "inline-block"
         } else {
-            axios.post("https://jsonplaceholder.typicode.com/users", this.state)
+            axios.post("http://localhost:8080/api/usersList", this.state)
             .then(resp=>{
             console.log(resp.data);
             this.props.addUser(resp.data);

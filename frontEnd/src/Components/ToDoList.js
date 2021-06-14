@@ -130,15 +130,15 @@ export default class TodoLists extends Component {
     }
     saveChanges = (e) => {
 
-        const parentID = parseInt(e.target.parentElement.parentElement.id);
+        //const parentID = parseInt(e.target.parentElement.parentElement.id);
         
 
         if(this.state.updateInputValue !== ""){
-            axios.put("http://localhost:8080/api/todos/" + parentID, { title: this.state.updateInputValue})
+            axios.put("http://localhost:8080/api/todos/" + e.target.parentElement.parentElement.id, { title: this.state.updateInputValue})
             .then( res => console.log(res.data) )
             .then(()=>{
                 this.setState({...this.state, todos: this.state.todos.filter(item => {
-                    return item.id === parentID ? item.title = this.state.updateInputValue : item
+                    return item.id == e.target.parentElement.parentElement.id ? item.title = this.state.updateInputValue : item
                 })});
                 this.setState({updateInputValue: "", oneClickEdit: !this.state.oneClickEdit});
             })
