@@ -15,6 +15,7 @@ const reducer = (state, action) => {
         case "createSection" : return {...state, createPostClicked: action.payload};
         case "title" : return {...state, title: action.payload};
         case "body" : return {...state, body: action.payload};
+        //case "find" : return {...state, find: action.payload};
         default:
             return state;
     }
@@ -89,14 +90,17 @@ export default function Posts() {
 
     const handleChange = (e) => {
         dispatch({type: e.target.name, payload: e.target.value})
+        
     }
-
+    
 
     return (
         <div>
             <h1 id="postHeader">All Posts</h1>
 
             <button onClick={createPostSection} id="createPostButton">Create Posts</button>
+
+            
 
             {state.createPostClicked ? 
             <div id="postsForm">
@@ -131,13 +135,11 @@ export default function Posts() {
                             
                         </span>
                         <p className="postBody">{item.body}</p>
-                        
-
                         <hr />
                     </div>
                     
                     )
-                }) }
+                })}
             </div>
             
             {/* <Switch> 

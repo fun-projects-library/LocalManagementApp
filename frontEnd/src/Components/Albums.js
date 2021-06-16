@@ -13,7 +13,9 @@ import '../styles/Albums.css'
             albums: [],
             input: "",
             showForm: false,
-            oneClicked: false
+            oneClicked: false, 
+            find:"",
+            showFind: false
         }
     }
 
@@ -123,11 +125,20 @@ import '../styles/Albums.css'
 
 
     render() {
-        
+        const filteredData =this.state.albums.filter(
+            item=>{
+              return item.title.toLowerCase().indexOf(this.state.find.toLowerCase()) !== -1
+        })
         return (
             <div>
              <h1 id="albumHeader">Albums List</h1>
-             <button id="addButtonAlbums" onClick={this.showAddAlbum}>Add</button>
+             <div id="findAndAddBtn">
+                    <button id="addButtonAlbums" onClick={this.showAddAlbum}>Add</button>
+                    <button id="findButtonAlbums" onClick={()=>this.setState({showFind: !this.state.showFind})}>Find</button>
+             </div>
+             {this.state.showFind ? 
+             <input placeholder="Find an Album by title!" id="findPostInput" name="find" onChange={this.handleChange} value={this.state.find}/> : ""}
+             
              {this.state.showForm ? 
              <div className="addAlbumDiv">
                 <input name="input" id="albumInput" value={this.state.input} onChange={this.handleChange} placeholder="Enter your item!"></input>
@@ -140,7 +151,7 @@ import '../styles/Albums.css'
              </div> : ""}
              
              <div className='album-container'>
-             {this.state.albums.map((item,index) => {
+             {filteredData.map((item,index) => {
                  return (
                     <div className='container' key={index} id={item.id}>
                         <div className="albumBothButtons">
