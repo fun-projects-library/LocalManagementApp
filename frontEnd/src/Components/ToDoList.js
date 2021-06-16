@@ -114,7 +114,7 @@ export default class TodoLists extends Component {
         //console.log(e.target.parentElement.previousElementSibling.previousElementSibling)
 
         if(this.state.updateInputValue !== ""){
-            e.target.parentElement.previousElementSibling.previousElementSibling.value = this.state.todos[e.target.parentElement.parentElement.id-1].title;
+            e.target.parentElement.previousElementSibling.previousElementSibling.value = this.state.todos[e.target.id].title;
         }
         
 
@@ -130,17 +130,17 @@ export default class TodoLists extends Component {
     }
     saveChanges = (e) => {
 
-        //const parentID = parseInt(e.target.parentElement.parentElement.id);
-        
+        const parentID = e.target.parentElement.parentElement.id;
 
         if(this.state.updateInputValue !== ""){
-            axios.put("http://localhost:8080/api/todos/" + e.target.parentElement.parentElement.id, { title: this.state.updateInputValue})
+            axios.put("http://localhost:8080/api/todos/" + parentID, { title: this.state.updateInputValue})
             .then( res => console.log(res.data) )
             .then(()=>{
                 this.setState({...this.state, todos: this.state.todos.filter(item => {
-                    return item.id == e.target.parentElement.parentElement.id ? item.title = this.state.updateInputValue : item
+                    return item.id === parentID ? item.title = this.state.updateInputValue : item
                 })});
                 this.setState({updateInputValue: "", oneClickEdit: !this.state.oneClickEdit});
+                
             })
         } else {
             this.setState({updateInputValue: "", oneClickEdit: !this.state.oneClickEdit});
@@ -164,7 +164,7 @@ export default class TodoLists extends Component {
         // console.log(this.state.todos)
         return (
             <div id="mainDiv">
-                <label style={{fontSize: "25px", fontWeight:"bold"}}>To Do List</label>
+                <label style={{fontSize: "27px", fontWeight:"bold"}}>To Do List</label>
                 <br/>
                 <input name="input" id="todo_input" value={this.state.input} onChange={this.handleChange} placeholder="Enter your item!"></input>
                 <span id="usernameRequire" className="requires">*required</span>
@@ -185,7 +185,7 @@ export default class TodoLists extends Component {
                             
                             <span className="iconsToEdit">
                                 <i className="far fa-check-circle checkIcons" onClick={this.saveChanges}></i>
-                                <i className="fas fa-times-circle cancelIcons" onClick={this.cancelChanges}></i>
+                                <i className="fas fa-times-circle cancelIcons" id={index} onClick={this.cancelChanges}></i>
                             </span>
 
                             

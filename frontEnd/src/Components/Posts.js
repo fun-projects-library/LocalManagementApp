@@ -34,7 +34,7 @@ export default function Posts() {
 
     
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/posts")
+        fetch("http://localhost:8080/api/posts")
             .then(res => res.json())
             .then(jsonResponse => {
                 dispatch({type: "setPosts", payload: jsonResponse})
@@ -47,7 +47,7 @@ export default function Posts() {
             method: "DELETE"
         }
 
-        fetch("https://jsonplaceholder.typicode.com/posts/" + e.target.parentElement.parentElement.id, data)
+        fetch("http://localhost:8080/api/posts/" + e.target.parentElement.parentElement.id, data)
         .then(res => res.json())
         .then(jsonRes => console.log(jsonRes))
         e.target.parentElement.parentElement.remove(); 
@@ -56,18 +56,18 @@ export default function Posts() {
     const createPostSection = ()=>{
         
         dispatch({type: "createSection", payload: !state.createPostClicked})
-        console.log(state)
+        //console.log(state)
     }
 
     const addPostFunc = () => {
         let item = {title: state.title, body:state.body};
-        
+        console.log(item)
         if(item.title === ""){
             titleRef.current.style.display = "inline-block";
         } else if(item.body === ""){
             bodyRef.current.style.display = "inline-block";
         } else {
-            axios.post("https://jsonplaceholder.typicode.com/posts", item)
+            axios.post("http://localhost:8080/api/posts", item)
             .then(res => {
                 console.log(res.data);
                 dispatch({type: "addPost", payload: res.data});

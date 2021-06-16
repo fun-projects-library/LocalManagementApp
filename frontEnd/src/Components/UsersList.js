@@ -98,7 +98,7 @@ class UsersList extends React.Component {
     }
 
 
-    //const parentID = parseInt(e.target.parentElement.parentElement.id);
+    const parentID = e.target.parentElement.parentElement.id;
     
     const data = {
       method: 'PUT',
@@ -109,32 +109,32 @@ class UsersList extends React.Component {
     }
 
     if(item.name || item.username || item.email || item.phone){
-      fetch("http://localhost:8080/api/usersList/" + e.target.parentElement.parentElement.id, data)
+      fetch("http://localhost:8080/api/usersList/" + parentID, data)
       .then((res)=> res.json())
       .then(jsonResponse => {
         console.log(jsonResponse);
         
-        if(jsonResponse.name){
+        if(item.name){
           this.setState({...this.state, users: this.state.users.filter(item => {
-            return item.id == e.target.parentElement.parentElement.id ? item.name = jsonResponse.name : item
+            return item.id === parentID ? item.name = jsonResponse.name : item
           })});
         }
 
-        if(jsonResponse.username){
+        if(item.username){
           this.setState({...this.state, users: this.state.users.filter(item => {
-            return item.id == e.target.parentElement.parentElement.id ? item.username = jsonResponse.username : item
+            return item.id === parentID ? item.username = jsonResponse.username : item
           })});
         }
 
-        if(jsonResponse.email){
+        if(item.email){
           this.setState({...this.state, users: this.state.users.filter(item => {
-            return item.id == e.target.parentElement.parentElement.id ? item.email = jsonResponse.email : item
+            return item.id === parentID ? item.email = jsonResponse.email : item
           })});
         }
         
-        if(jsonResponse.phone){
+        if(item.phone){
           this.setState({...this.state, users: this.state.users.filter(item => {
-            return item.id == e.target.parentElement.parentElement.id ? item.phone = jsonResponse.phone : item
+            return item.id === parentID ? item.phone = jsonResponse.phone : item
           })});
         }
         
@@ -152,18 +152,18 @@ class UsersList extends React.Component {
   cancelChanges(e){
 
 
-    // if(this.state.name !== "" || this.state.username !== "" || this.state.email !== "" || this.state.phone !== ""){
-    //   e.target.parentElement.parentElement.children[0].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].name;
+    if(this.state.name !== "" || this.state.username !== "" || this.state.email !== "" || this.state.phone !== ""){
+      e.target.parentElement.parentElement.children[0].children[0].value = this.state.users[e.target.id].name;
 
-    //   e.target.parentElement.parentElement.children[1].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].username;
+      e.target.parentElement.parentElement.children[1].children[0].value = this.state.users[e.target.id].username;
 
-    //   e.target.parentElement.parentElement.children[2].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].email;
+      e.target.parentElement.parentElement.children[2].children[0].value = this.state.users[e.target.id].email;
 
-    //   e.target.parentElement.parentElement.children[3].children[0].value = this.state.users[e.target.parentElement.parentElement.id-1].phone;
-    // }
+      e.target.parentElement.parentElement.children[3].children[0].value = this.state.users[e.target.id].phone;
+    }
 
 
-    //this.fetchUsersList()
+    
 
     this.setState({name: "", username: "", email: "", phone: ""})
     e.target.parentElement.style.display = "none";
@@ -226,7 +226,7 @@ class UsersList extends React.Component {
                     <td><span onClick={this.editUser} style={{color: "blue"}} className="editButtons">edit</span> / <span onClick={this.deleteUser} style={{color: "red"}} className="editButtons">delete</span></td>}
                      
                     
-                    <td style={{display: "none"}}><span onClick={this.saveChanges} style={{color: "rgb(15, 172, 9)"}} className="editButtons">save</span> / <span onClick={this.cancelChanges} style={{color: "rgb(168, 9, 9)"}} className="editButtons">cancel</span></td>
+                    <td style={{display: "none"}}><span onClick={this.saveChanges} style={{color: "rgb(15, 172, 9)"}} className="editButtons">save</span> / <span onClick={this.cancelChanges} style={{color: "rgb(168, 9, 9)"}} className="editButtons" id={index}>cancel</span></td>
                     
                     
                   </tr>

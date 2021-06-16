@@ -86,8 +86,11 @@ import '../styles/Albums.css'
         
         fetch('https://jsonplaceholder.typicode.com/albums/' + e.target.parentElement.parentElement.id, data)
         .then(response => response.json())
-        .then(jsonResponse => console.log(jsonResponse))
-        e.target.parentElement.parentElement.remove();
+        .then(jsonResponse => {
+            console.log(jsonResponse);
+            e.target.parentElement.parentElement.remove();
+        })
+        
 
         this.setState({oneClicked: !this.state.oneClicked});
     }
@@ -115,8 +118,7 @@ import '../styles/Albums.css'
     }
     cancelChanges = (e) => {
         
-        const indexNumber = e.target.parentElement.parentElement.id;
-        e.target.parentElement.previousElementSibling.innerHTML = this.state.albums[indexNumber - 1].title; 
+        e.target.parentElement.previousElementSibling.innerHTML = this.state.albums[e.target.id].title; 
         e.target.parentElement.previousElementSibling.contentEditable = false;
         e.target.parentElement.previousElementSibling.classList.remove("highlightInputs");
         e.target.parentElement.style.display = "none";
@@ -162,7 +164,7 @@ import '../styles/Albums.css'
                         <span className="albumItem" onClick={this.showButtons} contentEditable={false}>{item.title}</span>
                         <div className="secondAlbumButtons">
                             <button className="saveAlbumChanges" onClick={this.saveChanges}>Save</button>
-                            <button className="cancelAlbumChanges" onClick={this.cancelChanges}>Cancel</button>
+                            <button className="cancelAlbumChanges" onClick={this.cancelChanges} id={index}>Cancel</button>
                         </div>
                     </div>
                  ) 

@@ -22,11 +22,11 @@ export default function EditPost(props) {
     let { id } = useParams();
     
     // console.log(path, url)
-    // console.log(props)
+    //console.log(id)
 
 
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/posts/" + id)
+        fetch("http://localhost:8080/api/posts/" + id)
             .then(res => res.json())
             .then(jsonResponse => {
                 dispatch({type: "postForEdit", payload: jsonResponse})
@@ -51,10 +51,11 @@ export default function EditPost(props) {
 
         if(item.title || item.body){
 
-            axios.put("https://jsonplaceholder.typicode.com/posts/" + id, item )
+            axios.put("http://localhost:8080/api/posts/" + id, item )
                 .then((res)=>{
                 console.log(res.data)
             })
+            .catch(err=> {console.log(err)})
 
         }
         
